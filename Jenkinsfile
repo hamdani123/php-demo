@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    staging_Server="103.117.57.55"
+    staging_server="103.117.57.55"
     remote_dir="/var/www/html"
     remote_user="aplikasi"
   }
