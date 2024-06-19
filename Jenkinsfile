@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
+        sh 'rsync -avP --exclude="Jenkinfile" --delete ${WORKSPACE}/ ${remote_user}@${staging_server}:${remote_dir}'
         sh 'scp -r ${WORKSPACE} ${remote_user}@${staging_server}:${remote_dir}'
       }
     }
