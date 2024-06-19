@@ -1,16 +1,14 @@
-pipeline {
+pipeline{
   agent any
-  environment {
+  environment{
     staging_server="103.117.57.55"
-    remote_dir="/home/aplikasi/rolebase"
-    remote_user="aplikasi"
   }
-  stages {
-    stage('Deploy') {
-      steps {
-        sh 'rsync -avP --exclude="Jenkinfile" --delete ${WORKSPACE}/ ${remote_user}@${staging_server}:${remote_dir}'
-        sh 'scp -r ${WORKSPACE} ${remote_user}@${staging_server}:${remote_dir}'
+  stages{
+    stage('deploy to remote'){
+      steps{
+        sh 'scp ${WORKSPACE}/* aplikasi@${staging_server}:/home/aplikasi/php-demo/'
       }
     }
   }
 }
+  
